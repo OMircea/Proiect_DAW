@@ -39,13 +39,18 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpPost("fromForm")]
-        public IActionResult AddWithFromForm([FromForm] Restaurant restaurant)
-        {
-            Console.WriteLine(restaurant);
-            _unitOfWork.Restaurants.Add(restaurant);
+        [HttpPost("body")]
+        public IActionResult AddRestaurant(Restaurant r)
+        {   
+            _unitOfWork.Restaurants.Add(r);
             _unitOfWork.Complete();
-            return Ok(restaurant);
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult getRestaurantById(int id)
+        {
+            return Ok(_unitOfWork.Restaurants.GetById(id));
         }
     }
 }
