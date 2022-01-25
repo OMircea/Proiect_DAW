@@ -18,6 +18,12 @@ namespace WebApi.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+
+        [HttpGet("all")]
+        public IActionResult GetAll()
+        {
+            return Ok(_unitOfWork.Restaurants.GetAll());
+        }
         public IActionResult GetPopularRestaurants([FromQuery] int count)
         {
             return Ok(_unitOfWork.Restaurants.GetTopRestaurants(count));
@@ -50,6 +56,15 @@ namespace WebApi.Controllers
         public IActionResult getRestaurantById(int id)
         {
             return Ok(_unitOfWork.Restaurants.GetById(id));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteRestaurant(int id)
+        {
+            Restaurant restaurant = _unitOfWork.Restaurants.GetById(id);
+            _unitOfWork.Restaurants.Remove(restaurant);
+            _unitOfWork.Complete();
+            return Ok();
         }
     }
 }
