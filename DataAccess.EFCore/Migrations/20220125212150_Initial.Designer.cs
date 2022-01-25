@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.EFCore.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220122185727_Initial")]
+    [Migration("20220125212150_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,21 +23,6 @@ namespace DataAccess.EFCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("ClientRestaurant", b =>
-                {
-                    b.Property<int>("ClientsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RestaurantsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ClientsId", "RestaurantsId");
-
-                    b.HasIndex("RestaurantsId");
-
-                    b.ToTable("ClientRestaurant");
-                });
 
             modelBuilder.Entity("Domain.Entities.Client", b =>
                 {
@@ -59,6 +44,21 @@ namespace DataAccess.EFCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ClientRestaurant", b =>
+                {
+                    b.Property<int>("IdClient")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdRestaurant")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdClient", "IdRestaurant");
+
+                    b.HasIndex("IdRestaurant");
+
+                    b.ToTable("ClientRestaurant");
                 });
 
             modelBuilder.Entity("Domain.Entities.Restaurant", b =>
@@ -138,19 +138,23 @@ namespace DataAccess.EFCore.Migrations
                     b.ToTable("Waiter_infos");
                 });
 
-            modelBuilder.Entity("ClientRestaurant", b =>
+            modelBuilder.Entity("Domain.Entities.ClientRestaurant", b =>
                 {
-                    b.HasOne("Domain.Entities.Client", null)
-                        .WithMany()
-                        .HasForeignKey("ClientsId")
+                    b.HasOne("Domain.Entities.Client", "Client")
+                        .WithMany("ClientRestaurants")
+                        .HasForeignKey("IdClient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.Restaurant", null)
-                        .WithMany()
-                        .HasForeignKey("RestaurantsId")
+                    b.HasOne("Domain.Entities.Restaurant", "Restaurant")
+                        .WithMany("ClientRestaurants")
+                        .HasForeignKey("IdRestaurant")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("Domain.Entities.Waiter", b =>
@@ -175,8 +179,15 @@ namespace DataAccess.EFCore.Migrations
                     b.Navigation("Waiter");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Client", b =>
+                {
+                    b.Navigation("ClientRestaurants");
+                });
+
             modelBuilder.Entity("Domain.Entities.Restaurant", b =>
                 {
+                    b.Navigation("ClientRestaurants");
+
                     b.Navigation("Waiters");
                 });
 

@@ -31,6 +31,8 @@ options.UseSqlServer(
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<IRestaurantRepository, RestaurantRepository>();
 builder.Services.AddTransient<IWaiterRepository, WaiterRepository>();
+builder.Services.AddTransient<IWaiter_infoRepository, Waiter_infoRepository>();
+builder.Services.AddTransient<IClientRepository, ClientRepository>();
 #endregion
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 

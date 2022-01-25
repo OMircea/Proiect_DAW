@@ -6,9 +6,9 @@ using System.Text;
 
 namespace DataAccess.EFCore.Repositories
 {
-    public class ClientRepository : GenericRepository<Client>, IClientRepository
+    public class Waiter_infoRepository : GenericRepository<Waiter_info>, IWaiter_infoRepository
     {
-        public ClientRepository(ApplicationContext context) : base(context)
+        public Waiter_infoRepository(ApplicationContext context) : base(context)
         {
         }
     }

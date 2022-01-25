@@ -5,8 +5,7 @@ using System.Text;
 
 namespace Domain.Interfaces
 {
-    public interface IWaiterRepository : IGenericRepository<Waiter>
+    public interface IWaiter_infoRepository : IGenericRepository<Waiter_info>
     {
-        IEnumerable<Waiter> GetRestaurantWaiters();
     }
 }

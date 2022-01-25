@@ -12,8 +12,6 @@ namespace Domain.Entities
         public string? Name { get; set; }
         public string? Description { get; set; }
         public int Rating { get; set; }
-
-        public List<Waiter>? Waiters { get; set; }
-        public ICollection<Client>? Clients { get; set; }
+        public ICollection<ClientRestaurant>? ClientRestaurants { get; set; }
     }
 }

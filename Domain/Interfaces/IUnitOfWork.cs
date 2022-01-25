@@ -8,6 +8,9 @@ namespace Domain.Interfaces
     {
         IRestaurantRepository Restaurants { get; }
         IWaiterRepository Waiters { get; }
+        IWaiter_infoRepository Waiter_infos { get; }
+        IClientRepository Clients { get; }
+
         int Complete();
     }
 }

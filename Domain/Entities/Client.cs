@@ -12,7 +12,7 @@ namespace Domain.Entities
         public string? Name { get; set; }
         public string? Occupation { get; set; }
         public int Age { get; set; }
-        public ICollection<Restaurant>? Restaurants { get; set; }
+        public ICollection<ClientRestaurant>? ClientRestaurants { get; set; }
 
     }
 }

@@ -11,9 +11,8 @@ namespace Domain.Entities
         public int Id { get; set; }
         public string? Last_Name { get; set; }
         public string? First_Name { get; set; }
-        public int Rating { get; set; }
         public int RestaurantId { get; set; }
-        public Restaurant? Restaurant { get; set; }
-        public Waiter_info? Waiter_info { get; set; }
+        public virtual Restaurant? Restaurant { get; set; }
+        public virtual Waiter_info? Waiter_info { get; set; }
     }
 }

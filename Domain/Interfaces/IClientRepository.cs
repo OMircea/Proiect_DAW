@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Interfaces
 {
-    public interface IClientRepository : IGenericRepository<Waiter>
+    public interface IClientRepository : IGenericRepository<Client>
     {
     }
 }

@@ -20,8 +20,7 @@ namespace WebApi.Controllers
         }
         public IActionResult GetPopularRestaurants([FromQuery] int count)
         {
-            var popularDevelopers = _unitOfWork.Restaurants.GetTopRestaurants(count);
-            return Ok(popularDevelopers);
+            return Ok(_unitOfWork.Restaurants.GetTopRestaurants(count));
 
         }
         [HttpPost]

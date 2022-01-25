@@ -15,5 +15,21 @@ namespace DataAccess.EFCore
         public DbSet<Restaurant>? Restaurants { get; set; }
         public DbSet<Waiter>? Waiters { get; set; }
         public DbSet<Waiter_info>? Waiter_infos { get; set; }
+        public DbSet<ClientRestaurant>? ClientRestaurants { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ClientRestaurant>()
+                .HasKey(bc => new { bc.IdClient, bc.IdRestaurant });
+            modelBuilder.Entity<ClientRestaurant>()
+                .HasOne(bc => bc.Client)
+                .WithMany(b => b.ClientRestaurants)
+                .HasForeignKey(bc => bc.IdClient);
+            modelBuilder.Entity<ClientRestaurant>()
+                .HasOne(bc => bc.Restaurant)
+                .WithMany(c => c.ClientRestaurants)
+                .HasForeignKey(bc => bc.IdRestaurant);
+        }
     }
+
 }

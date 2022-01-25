@@ -42,21 +42,21 @@ namespace DataAccess.EFCore.Migrations
                 name: "ClientRestaurant",
                 columns: table => new
                 {
-                    ClientsId = table.Column<int>(type: "int", nullable: false),
-                    RestaurantsId = table.Column<int>(type: "int", nullable: false)
+                    IdClient = table.Column<int>(type: "int", nullable: false),
+                    IdRestaurant = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientRestaurant", x => new { x.ClientsId, x.RestaurantsId });
+                    table.PrimaryKey("PK_ClientRestaurant", x => new { x.IdClient, x.IdRestaurant });
                     table.ForeignKey(
-                        name: "FK_ClientRestaurant_Clients_ClientsId",
-                        column: x => x.ClientsId,
+                        name: "FK_ClientRestaurant_Clients_IdClient",
+                        column: x => x.IdClient,
                         principalTable: "Clients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClientRestaurant_Restaurants_RestaurantsId",
-                        column: x => x.RestaurantsId,
+                        name: "FK_ClientRestaurant_Restaurants_IdRestaurant",
+                        column: x => x.IdRestaurant,
                         principalTable: "Restaurants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -107,9 +107,9 @@ namespace DataAccess.EFCore.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClientRestaurant_RestaurantsId",
+                name: "IX_ClientRestaurant_IdRestaurant",
                 table: "ClientRestaurant",
-                column: "RestaurantsId");
+                column: "IdRestaurant");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Waiter_infos_WaiterId",
