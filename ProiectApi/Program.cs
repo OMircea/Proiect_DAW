@@ -34,6 +34,7 @@ builder.Services.AddTransient<IWaiterRepository, WaiterRepository>();
 builder.Services.AddTransient<IWaiter_infoRepository, Waiter_infoRepository>();
 builder.Services.AddTransient<IClientRepository, ClientRepository>();
 builder.Services.AddTransient<IClientRestaurantRepository, ClientRestaurantRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 #endregion
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 

@@ -17,6 +17,7 @@ namespace DataAccess.EFCore.UnitOfWorks
             Waiter_infos = new Waiter_infoRepository(_context);
             Clients = new ClientRepository(_context);
             ClientRestaurants = new ClientRestaurantRepository(_context);
+            Users = new UserRepository(_context);
 
         }
         public IRestaurantRepository Restaurants { get; private set; }
@@ -24,6 +25,7 @@ namespace DataAccess.EFCore.UnitOfWorks
         public IWaiter_infoRepository Waiter_infos { get; private set; }
         public IClientRepository Clients { get; private set; }
         public IClientRestaurantRepository ClientRestaurants { get; private set; }
+        public IUserRepository Users { get; private set; }
 
         public int Complete()
         {
