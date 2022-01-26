@@ -58,6 +58,17 @@ namespace WebApi.Controllers
             return Ok(_unitOfWork.Restaurants.GetById(id));
         }
 
+        [HttpPut("{id}")]
+        public IActionResult updateRestaurant(Restaurant r, int id)
+        {
+            Restaurant restaurant = _unitOfWork.Restaurants.GetById(id);
+            restaurant.Name = r.Name;
+            restaurant.Description = r.Description;
+            restaurant.Rating = r.Rating;
+            _unitOfWork.Complete();
+            return Ok();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteRestaurant(int id)
         {

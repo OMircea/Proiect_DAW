@@ -30,5 +30,14 @@ namespace WebApi.Controllers
         {
             return Ok(_unitOfWork.Restaurants.GetById(id));
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteWaiter(int id)
+        {
+            Waiter waiter = _unitOfWork.Waiters.GetById(id);
+            _unitOfWork.Waiters.Remove(waiter);
+            _unitOfWork.Complete();
+            return Ok();
+        }
     }
 }

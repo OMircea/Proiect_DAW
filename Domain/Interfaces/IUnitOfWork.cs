@@ -10,6 +10,7 @@ namespace Domain.Interfaces
         IWaiterRepository Waiters { get; }
         IWaiter_infoRepository Waiter_infos { get; }
         IClientRepository Clients { get; }
+        IClientRestaurantRepository ClientRestaurants { get; }
 
         int Complete();
     }

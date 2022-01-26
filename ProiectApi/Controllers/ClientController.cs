@@ -43,6 +43,12 @@ namespace WebApi.Controllers
         public IActionResult AddClient(Client c)
         {
             _unitOfWork.Clients.Add(c);
+            //var cr = new ClientRestaurant
+            //{
+            //    IdClient = c.Id,
+            //    IdRestaurant = c.ClientRestaurants
+            //};
+            //_unitOfWork.ClientRestaurants.Add(cr);
             _unitOfWork.Complete();
             return Ok();
         }
@@ -51,6 +57,15 @@ namespace WebApi.Controllers
         public IActionResult getClientById(int id)
         {
             return Ok(_unitOfWork.Clients.GetById(id));
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteClient(int id)
+        {
+            Client client = _unitOfWork.Clients.GetById(id);
+            _unitOfWork.Clients.Remove(client);
+            _unitOfWork.Complete();
+            return Ok();
         }
     }
 }
