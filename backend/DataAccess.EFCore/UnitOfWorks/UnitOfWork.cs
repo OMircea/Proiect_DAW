@@ -18,7 +18,6 @@ namespace DataAccess.EFCore.UnitOfWorks
             Clients = new ClientRepository(_context);
             ClientRestaurants = new ClientRestaurantRepository(_context);
             Users = new UserRepository(_context);
-
         }
         public IRestaurantRepository Restaurants { get; private set; }
         public IWaiterRepository Waiters { get; private set; }
