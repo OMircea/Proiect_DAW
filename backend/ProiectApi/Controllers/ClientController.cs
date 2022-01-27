@@ -43,12 +43,17 @@ namespace WebApi.Controllers
         public IActionResult AddClient(Client c)
         {
             _unitOfWork.Clients.Add(c);
-            //var cr = new ClientRestaurant
-            //{
-            //    IdClient = c.Id,
-            //    IdRestaurant = c.ClientRestaurants
-            //};
-            //_unitOfWork.ClientRestaurants.Add(cr);
+            _unitOfWork.Complete();
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult updateClient(Client c, int id)
+        {
+            Client client = _unitOfWork.Clients.GetById(id);
+            client.Name = c.Name;
+            client.Occupation = c.Occupation;
+            client.Age = c.Age;
             _unitOfWork.Complete();
             return Ok();
         }

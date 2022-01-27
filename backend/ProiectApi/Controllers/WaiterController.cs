@@ -25,10 +25,35 @@ namespace WebApi.Controllers
             return Ok(_unitOfWork.Waiters.GetRestaurantWaiters());
         }
 
+        [HttpGet("all")]
+        public IActionResult GetAll()
+        {
+            return Ok(_unitOfWork.Waiters.GetAll());
+        }
+
         [HttpGet("{id}")]
         public IActionResult getRestaurantById(int id)
         {
             return Ok(_unitOfWork.Restaurants.GetById(id));
+        }
+
+        [HttpPost("body")]
+        public IActionResult AddWaiter(Waiter w)
+        {
+            _unitOfWork.Waiters.Add(w);
+            _unitOfWork.Complete();
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult updateRestaurant(Waiter w, int id)
+        {
+            Waiter waiter = _unitOfWork.Waiters.GetById(id);
+            waiter.First_Name = w.First_Name;
+            waiter.Last_Name = w.Last_Name;
+            waiter.RestaurantId = w.RestaurantId;
+            _unitOfWork.Complete();
+            return Ok();
         }
 
         [HttpDelete("{id}")]
