@@ -16,6 +16,7 @@ namespace DataAccess.EFCore
         public DbSet<Waiter>? Waiters { get; set; }
         public DbSet<Waiter_info>? Waiter_infos { get; set; }
         public DbSet<ClientRestaurant>? ClientRestaurants { get; set; }
+        public DbSet<User>? Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
