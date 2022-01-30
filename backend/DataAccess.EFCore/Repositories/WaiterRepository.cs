@@ -18,5 +18,11 @@ namespace DataAccess.EFCore.Repositories
             return _context.Waiters.Include(x=>x.Restaurant).ToList();
 #pragma warning restore CS8604 // Possible null reference argument.
         }
+        public IEnumerable<Waiter> getWaiterInfos()
+        {
+#pragma warning disable CS8604 // Possible null reference argument.
+            return _context.Waiters.Include(x=>x.Waiter_info).ToList();
+#pragma warning restore CS8604 // Possible null reference argument.
+        }
     }
 }

@@ -37,6 +37,23 @@ namespace WebApi.Controllers
             return Ok(_unitOfWork.Restaurants.GetById(id));
         }
 
+        [HttpGet("restaurant_by_waiter_id/{id}")]
+        public IActionResult getRestaurantNamebyWaiterId(int id)
+        {
+            var restaurant_name = _unitOfWork.Waiters.GetAll().Where(x => x.Id == id).Join(_unitOfWork.Restaurants.GetAll(),
+                x => x.RestaurantId, y => y.Id,
+                (x, y) =>
+                y.Name
+            );
+            return Ok(restaurant_name.FirstOrDefault());
+        }
+
+        [HttpGet("waiter_infos")]
+        public IActionResult GetWaiterInfo()
+        {
+            return Ok(_unitOfWork.Waiters.getWaiterInfos());
+        }
+
         [HttpPost("body")]
         public IActionResult AddWaiter(Waiter w)
         {

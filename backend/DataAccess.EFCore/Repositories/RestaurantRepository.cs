@@ -17,7 +17,6 @@ namespace DataAccess.EFCore.Repositories
 #pragma warning disable CS8604 // Possible null reference argument.
             return _context.Restaurants.OrderByDescending(d => d.Rating).Take(count).ToList();
 #pragma warning restore CS8604 // Possible null reference argument.
-
         }
     }
 }

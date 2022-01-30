@@ -8,5 +8,6 @@ namespace Domain.Interfaces
     public interface IWaiterRepository : IGenericRepository<Waiter>
     {
         IEnumerable<Waiter> GetRestaurantWaiters();
+        IEnumerable<Waiter> getWaiterInfos();
     }
 }
