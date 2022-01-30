@@ -24,20 +24,6 @@ namespace WebApi.Controllers
         {
             return Ok(_unitOfWork.Clients.GetAll());
         }
-
-        [HttpPost]
-        public IActionResult AddClient()
-        {
-            var client = new Client
-            {
-                Name = "Andrei Popescu",
-                Occupation = "dsfsdf",
-                Age = 5
-            };
-            _unitOfWork.Clients.Add(client);
-            _unitOfWork.Complete();
-            return Ok();
-        }
          
         [HttpPost("body")]
         public IActionResult AddClient(Client c)
