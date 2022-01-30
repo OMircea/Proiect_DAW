@@ -29,20 +29,6 @@ namespace WebApi.Controllers
             return Ok(_unitOfWork.Restaurants.GetTopRestaurants(count));
 
         }
-        [HttpPost]
-        public IActionResult AddRestaurant()
-        {
-            var restaurant = new Restaurant
-            {
-                Name = "Taj",
-                Description = "Cel mai bun restaurant din oras",
-                Rating = 5
-            };
-            _unitOfWork.Restaurants.Add(restaurant);
-            _unitOfWork.Complete();
-            return Ok();
-        }
-
 
         [HttpPost("body")]
         public IActionResult AddRestaurant(Restaurant r)
