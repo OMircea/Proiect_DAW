@@ -42,6 +42,11 @@ namespace DataAccess.EFCore.Repositories
             return _context.Set<T>().Find(id);
         }
 
+        public T GetByIds(int id1, int id2)
+        {
+            return _context.Set<T>().Find(id1, id2);
+        }
+
         public void Remove(T entity)
         {
             _context.Set<T>().Remove(entity);
