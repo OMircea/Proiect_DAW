@@ -45,14 +45,18 @@ export class Restaurant extends Component {
                             <th>
                                 Rating
                             </th>
+                            <th>
+                                Options
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         {restaurants.map(res=>
-                            <tr key={res.RestaurantId}>
-                                <td>{res.RestaurantId}</td>
-                                <td>{res.Name}</td>
-                                <td>{res.Rating}</td>
+                            <tr key={res.id}>
+                                <td>{res.id}</td>
+                                <td>{res.name}</td>
+                                <td>{res.description}</td>
+                                <td>{res.rating}</td>
                                 <td>
                                     <button type="button" className="btn btn-light mr-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
