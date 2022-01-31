@@ -5,6 +5,7 @@ import {Home} from './Home';
 import {Restaurant} from './Restaurant';
 import {Client} from './Client';
 import {Waiter} from './Waiter';
+import {ClientRestaurant} from './ClientRestaurant';
 import {BrowserRouter, Route, Switch, NavLink} from 'react-router-dom';
 
 function App() {
@@ -28,13 +29,18 @@ function App() {
             </NavLink>
           </li>
           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="/client">
+            <NavLink className="btn btn-light btn-outline-primary" to="/client"> 
               Client
             </NavLink>
           </li>
           <li className="nav-item- m-1">
             <NavLink className="btn btn-light btn-outline-primary" to="/waiter">
               Waiter
+            </NavLink>
+          </li>
+          <li className="nav-item- m-1">
+            <NavLink className="btn btn-light btn-outline-primary" to="/clientrestaurant">
+              ClientRestaurant
             </NavLink>
           </li>
         </ul>
@@ -44,6 +50,7 @@ function App() {
         <Route path='/restaurant' component={Restaurant}/>
         <Route path='/client' component={Client}/>
         <Route path='/waiter' component={Waiter}/>
+        <Route path='/clientrestaurant' component={ClientRestaurant}/>
       </Switch>
     </div>
     </BrowserRouter>
